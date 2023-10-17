@@ -44,12 +44,3 @@ pre {
     border: 1px solid #ccc;
     margin: 10px;
 }
-You can save this CSS code in a .css file, and then link it to your HTML file using the <link> element in the HTML <head> section. For example:
-
-html
-Copy code
-<head>
-    <title>Sample HTML Page</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-This CSS file provides some basic styling for the HTML elements in the sample HTML page, such as setting font styles, colors, margins, and background colors. You can modify and expand this CSS file to style your HTML content as needed.
