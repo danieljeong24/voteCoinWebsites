@@ -1,0 +1,55 @@
+/* This is a comment in CSS */
+
+/* Apply styles to the <body> element */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply styles to the <h1> element */
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Apply styles to the <p> element */
+p {
+    color: #666;
+    font-size: 16px;
+    margin: 20px;
+}
+
+/* Apply styles to the <ul> element */
+ul {
+    list-style-type: disc;
+    padding-left: 30px;
+}
+
+/* Apply styles to the <li> elements within the <ul> */
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Apply styles to the <h2> elements */
+h2 {
+    color: #444;
+}
+
+/* Apply styles to the <pre> element */
+pre {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+You can save this CSS code in a .css file, and then link it to your HTML file using the <link> element in the HTML <head> section. For example:
+
+html
+Copy code
+<head>
+    <title>Sample HTML Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+This CSS file provides some basic styling for the HTML elements in the sample HTML page, such as setting font styles, colors, margins, and background colors. You can modify and expand this CSS file to style your HTML content as needed.
