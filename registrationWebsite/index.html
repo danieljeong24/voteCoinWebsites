@@ -1,34 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voter Registration</title>
     <link rel="stylesheet" href="regCSS.css">
-    <script src="backend.js" defer></script>
 </head>
+
 <body>
 
-<h1>Welcome to Your States voter registration portal!</h1>
+
+
+
+<h1>Welcome to Your State's voter registration portal!</h1>
 
 <h3>Voter Registration! (Soon to have ID and picture validation)</h3>
 
-<form action="connect.php" method="post">
+<form id="registration-form" onsubmit="checkData(event)">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br><br>
 
     <label for="ssn">SSN (Social Security Number):</label><br>
     <input type="text" id="ssn" name="ssn"><br><br>
 
-    <label for="dob">Date of Birth:</label><br>
-    <input type="date" id="dob" name="dob"><br><br>
+    <label for="district">District:</label><br>
+    <input type="text" id="district" name="district"><br><br>
 
-    <label for="address">Address:</label><br>
-    <textarea id="address" name="address" rows="4" cols="50"></textarea><br><br>
+    <label for="dob">Date of Birth (YYYYMMDD):</label><br>
+    <input type="text" id="dob" name="dob"><br><br>
 
     <input type="submit" value="Submit">
 </form>
 
-</body>
-</html>
 
+
+<div id="data-container"></div>
+
+<script>
+    function hashString(str) {
+        // Simple hash function for demonstration purposes
+        let hash = 0;
+        if (str.length === 0) {
+            return hash;
+        }
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = (hash << 5) - hash + char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    }
+
+    function doubleHashString(str) {
+        let doubleHash = str;
+        for (let i = 0; i < 5; i++) { // Concatenate the hash 5 times for a longer string
+            doubleHash += hashString(doubleHash.toString());
+        }
+        return doubleHash;
+    }
+
+    function checkData(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const ssn = document.getElementById('ssn').value;
+        const district = document.getElementById('district').value;
+        const dob = document.getElementById('dob').value;
+
+        fetch('information.json')
+            .then(response => response.json())
+            .then(data => {
+                const matchedData = data.find(item => item.Name === name && item.SSN === parseInt(ssn) && item.District === parseInt(district) && item.DOB === dob);
+                if (matchedData) {
+                    const dataContainer = document.getElementById('data-container');
+                    const hashedString = hashString(name + ssn + district + dob);
+                    const doubleHashedString = doubleHashString(hashedString.toString());
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = `Your unique identifier: ${doubleHashedString}`;
+                    dataContainer.appendChild(paragraph);
+                } else {
+                    alert('No matching data found in the database.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+</script>
+
+<div class="background" id="background">
+</div>
+</body>
+
+</html>

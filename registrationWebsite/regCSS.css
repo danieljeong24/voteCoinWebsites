@@ -1,55 +1,138 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
+    overflow: hidden;
+    position: relative;
 }
 
 h1 {
-    color: #333;
-    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 h3 {
-    color: #555;
-    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
 }
 
-form {
-    max-width: 400px;
-    margin: 20px auto;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 label {
-    color: #333;
-    display: block;
-    margin: 10px 0 5px;
+    font-size: 1.4rem;
 }
 
-input[type="text"],
-input[type="date"],
-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+input[type="text"], input[type="date"] {
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 50px;
+    border: 2px solid #3498db;
+    background-color: #121212;
+    color: #ffffff;
+    width: 300px;
+    font-size: 1.2rem;
+}
+
+input[type="text"]:focus, input[type="date"]:focus {
+    outline: none;
+    border-color: #e67e22;
 }
 
 input[type="submit"] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
+    padding: 15px 30px;
+    border-radius: 50px;
     border: none;
-    border-radius: 4px;
+    background-color: #27ae60;
+    color: #ffffff;
+    font-size: 1.4rem;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #2ecc71;
+}
+
+#data-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#data-container p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.4rem;
+    background-color: #3498db;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    -webkit-animation: gradientBG 15s ease infinite;
+    -moz-animation: gradientBG 15s ease infinite;
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@-webkit-keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@-moz-keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
